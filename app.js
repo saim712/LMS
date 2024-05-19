@@ -13,7 +13,7 @@ var headRouter = require('./routes/head');
 var coursesRouter = require('./routes/courses');
 
 var app = express();
-mongoose.connect('mongodb://0.0.0.0:27017/lms')
+mongoose.connect('mongodb://localhost:27017/')
 .then((db)=>{
   console.log("Database Connected Successfully");
 },(err)=>{return err});
@@ -26,6 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
